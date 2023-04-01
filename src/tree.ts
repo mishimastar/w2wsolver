@@ -29,27 +29,14 @@ export class LetterNode {
         return this.#end;
     }
 
-    // letter() {
-    //     return this.letter;
-    // }
-
-    // drawCurrent() {
-    //     console.log(this.#daughters);
-    //     // for (const [, d] of this.#daughters) d.drawTree();
-    // }
-
-    // drawTree() {
-    //     console.log(this.#daughters);
-    //     for (const [, d] of this.#daughters) d.drawCurrent();
-    // }
-
-    // draw(prev?: string) {
-    //     if (this.#end) console.log(prev!);
-    //     for (const [letter, daughter] of this.#daughters) daughter.draw(`${prev}${letter}`);
-    // }
-
     getDaughter(letter: string): LetterNode | undefined {
         return this.#daughters.get(letter);
+    }
+
+    getAsObject() {
+        const d: { l: string; end: boolean; d: any[] }[] = [];
+        for (const dau of this.#daughters.values()) d.push(dau.getAsObject());
+        return { l: this.letter, end: this.#end, d };
     }
 }
 
@@ -72,15 +59,6 @@ export class Tree {
         }
     }
 
-    // draw() {
-    //     for (const [, startNode] of this.#Tree) startNode.draw('');
-    // }
-
-    // drawTree() {
-    //     console.log(this.#Tree.get('б')?.drawCurrent());
-    //     // for (const [, d] of this.#Tree) d.drawTree();
-    // }
-
     hasWord(word: string): boolean {
         if (word.length === 0) return false;
         let pointer = this.#Tree.get(word[0]!);
@@ -96,5 +74,14 @@ export class Tree {
 
     getDaughter(letter: string): LetterNode | undefined {
         return this.#Tree.get(letter);
+    }
+
+    getAsObject() {
+        const daughters: { l: string; end: boolean; d: any[] }[] = [];
+        // for (const d of this.#Tree.values()) {
+        // }
+        const d = this.#Tree.get('а')!;
+        daughters.push(d.getAsObject());
+        return daughters;
     }
 }

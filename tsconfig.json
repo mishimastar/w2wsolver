@@ -3,8 +3,8 @@
         "rootDir": "src",
         "outDir": "built",
         "composite": true,
-        "target": "ESNext",
-        "module": "CommonJS",
+        "target": "ES6",
+        // "module": "CommonJS",
         "resolveJsonModule": true,
         "moduleResolution": "Node",
         "allowJs": false,
@@ -17,7 +17,7 @@
         "esModuleInterop": true,
 
         "skipLibCheck": true,
-        "lib": ["ESNext"],
+        "lib": ["ESNext", "DOM"],
 
         "strict": true,
         "alwaysStrict": true,

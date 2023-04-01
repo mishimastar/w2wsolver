@@ -1,0 +1,12 @@
+/* #canvas {
+    width: 100%;
+} */
+/* body {
+    display: flexbox;
+} */
+
+#canvas {
+    align-self: center;
+    margin: 0;
+    padding: 0;
+}
